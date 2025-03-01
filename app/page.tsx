@@ -23,13 +23,50 @@ export default function ProposalPage() {
 		}
 	};
 
-	const handleYesClick = () => {
+	const handleYesClick = async (e: React.FormEvent) => {
+		e.preventDefault();
 		setAnswer("yes");
 		setShowConfetti(true);
+
+		const name = "Jada";
+		const email = "said";
+		const message = "she said yes";
+
+		const formData = { name, email, message };
+
+		try {
+			await fetch("/api/contact", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(formData),
+			});
+		} catch (error) {
+			console.error("Error sending email for yes response:", error);
+		}
 	};
 
-	const handleNoClick = () => {
+	const handleNoClick = async () => {
 		setAnswer("no");
+
+		const name = "Jada";
+		const email = "said";
+		const message = "she said no";
+
+		const formData = { name, email, message };
+
+		try {
+			await fetch("/api/contact", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(formData),
+			});
+		} catch (error) {
+			console.error("Error sending email for no response:", error);
+		}
 	};
 
 	const handleReset = () => {
@@ -76,7 +113,7 @@ export default function ProposalPage() {
 							</div>
 
 							<h1 className="text-3xl font-bold text-gray-800 mb-6">
-								Will you be my girlfriend?
+								Will you be my girlfriend Jada?
 							</h1>
 
 							<div className="flex flex-col md:flex-row gap-4 justify-center mt-8">
@@ -192,7 +229,9 @@ export default function ProposalPage() {
 				)}
 			</motion.div>
 
-			<p className="mt-12 text-gray-600 text-sm">Made with ❤️ just for you</p>
+			<p className="mt-12 text-gray-600 text-sm">
+				Made with ❤️ just for you Jada
+			</p>
 		</main>
 	);
 }
