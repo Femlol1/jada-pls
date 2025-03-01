@@ -182,7 +182,7 @@ export default function ProposalPage() {
 								className="mt-4 bg-red-500 hover:bg-red-600"
 								onClick={handleReset}
 							>
-								Back to proposal
+								Back to question
 							</Button>
 						</motion.div>
 					</Card>
